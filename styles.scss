@@ -9,6 +9,10 @@
 
 @import 'variables.scss';
 
+@keyframes details_opac {
+    0%    {opacity: 0;}
+    100%  {opacity: 1;}
+  }
 
 .header {
     &_box {
@@ -64,7 +68,7 @@
                                 line-height: 32px;
                                 letter-spacing: 0.025em; 
                                 list-style: inside url('img/arrow-down.png');
-                                direction: rtl;
+                                direction: rtl;                               
                             }
                             &_box {
                                 position: absolute;
@@ -127,8 +131,12 @@
                                     transform: rotate(45deg);
                                     border-top: 1px solid $color-grey;
                                     border-left: 1px solid $color-grey;
+                                    
                                 }
                             }
+                        &_details[open] &_details_box {
+                            animation: details_opac 0.3s ;
+                            }    
                     }
                 &_form {
                         display: flex;
@@ -306,6 +314,9 @@
                     }
                 }
                 }
+                &_details[open] summary ~ * {
+                    animation: details_opac 0.3s ;
+                }
             }
             &_button {
                 box-sizing: border-box;
@@ -380,7 +391,8 @@
                         color: $color-pink;
                     }
                     &:hover .menu-box{
-                        display: flex;
+                        visibility: visible;
+                        opacity: 1;
                         &:before {
                             content: "";
                             display: block;
@@ -468,7 +480,11 @@
 }
 
 .menu-box {
-    display: none;
+    display: flex;
+    visibility: hidden;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.5s;
     padding: 12px 25px 12px;
     position: absolute;
     top: 43px;
@@ -648,11 +664,15 @@
                 &_img {
                         position: relative;
                         &:hover .f-items_catalog_row_cell_img_overlay {
-                            display: flex;
+                            visibility: visible;
+                            opacity: 1;
                             box-shadow: 5px 5px 10.1px #8e8e8e;
                         }
                         &_overlay {
-                            display: none;
+                            visibility: hidden;
+                            opacity: 0;
+                            transition: opacity 0.3s;
+                            display: flex;
                             position: absolute;
                             align-items: center;
                             justify-content: center;

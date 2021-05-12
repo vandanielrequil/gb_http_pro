@@ -6,6 +6,24 @@
   font-family: 'Lato', sans-serif;
 }
 
+@-webkit-keyframes details_opac {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes details_opac {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .header_box {
   margin: 25px auto;
   width: 1142px;
@@ -188,6 +206,11 @@
           transform: rotate(45deg);
   border-top: 1px solid #e8e8e8;
   border-left: 1px solid #e8e8e8;
+}
+
+.header_box_left_search_browse_details[open] .header_box_left_search_browse_details_box {
+  -webkit-animation: details_opac 0.3s;
+          animation: details_opac 0.3s;
 }
 
 .header_box_left_search_form {
@@ -462,6 +485,11 @@
   margin-bottom: 0;
 }
 
+.header_box_right_cart_details[open] summary ~ * {
+  -webkit-animation: details_opac 0.3s;
+          animation: details_opac 0.3s;
+}
+
 .header_box_right_button {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -574,9 +602,8 @@
 }
 
 .main_slide_banner_menu_list_li:hover .menu-box {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  visibility: visible;
+  opacity: 1;
 }
 
 .main_slide_banner_menu_list_li:hover .menu-box:before {
@@ -680,7 +707,15 @@
 }
 
 .menu-box {
-  display: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition-property: opacity;
+  transition-property: opacity;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
   padding: 12px 25px 12px;
   position: absolute;
   top: 43px;
@@ -955,15 +990,20 @@
 }
 
 .f-items_catalog_row_cell_img:hover .f-items_catalog_row_cell_img_overlay {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  visibility: visible;
+  opacity: 1;
   -webkit-box-shadow: 5px 5px 10.1px #8e8e8e;
           box-shadow: 5px 5px 10.1px #8e8e8e;
 }
 
 .f-items_catalog_row_cell_img_overlay {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   position: absolute;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -1425,7 +1465,7 @@
   height: 12px;
 }
 
-.flexcentr, .breadcrum, .product-slide, .product-slide_arrow, .product-data-anchor, .product-data, .product-data_buttons_add, .slider3, .choose-value_color, .f-items_catalog_row_cell_img {
+.flexcentr, .pink-button, .breadcrum, .product-slide, .product-slide_arrow, .product-data-anchor, .product-data, .slider3, .choose-value_color, .f-items_catalog_row_cell_img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1552,7 +1592,47 @@
 }
 
 .bd-top-no {
-  border-top: none;
+  border-top: none !important;
+}
+
+.pink-button {
+  width: 537px;
+  height: 55px;
+  border: 2px solid #f16d7f;
+  background-color: #f16d7f;
+  color: #fff;
+}
+
+.pink-button-text {
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.pink-button-img {
+  margin: 0 15px 0 0;
+}
+
+.pink-button-img2 {
+  margin: 0 15px 0 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+.pink-button:hover {
+  border: 2px solid #f16d7f;
+  background-color: #ffffff;
+  color: #f16d7f;
+}
+
+.pink-button:hover .pink-button-img {
+  visibility: hidden;
+  position: absolute;
+}
+
+.pink-button:hover .pink-button-img2 {
+  visibility: visible;
+  position: relative;
 }
 
 .breadcrum {
@@ -1627,24 +1707,6 @@
   width: 537px;
 }
 
-.product-data_buttons_add {
-  width: 537px;
-  height: 55px;
-  border: 1px solid #f16d7f;
-  background-color: #ffffff;
-}
-
-.product-data_buttons_add_text {
-  font-size: 16px;
-  line-height: 1.2;
-  font-weight: 700;
-  color: #f16d7f;
-}
-
-.product-data_buttons_add_img {
-  margin: 0 8px 0 0;
-}
-
 .hr-line-g {
   margin: 43px 0 63px 0;
   height: 1px;
@@ -1702,6 +1764,11 @@
 .choose-value[open] .choose-value_summary_arrow {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
+}
+
+.choose-value[open] .choose-value_box {
+  -webkit-animation: details_opac 0.3s;
+          animation: details_opac 0.3s;
 }
 
 .choose-value_box {
